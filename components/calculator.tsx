@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useCallback, useEffect, useRef } from 'react';
-import { Wallet, Github, FileText, Book, History, Eye , Star} from 'lucide-react'; // 添加新图标
+import { Wallet, FileText, History, Eye } from 'lucide-react';
 import Link from 'next/link'; // 导入Link组件用于导航
 import { useLanguage } from './LanguageContext';
 import { LanguageSwitcher } from './LanguageSwitcher';
@@ -396,14 +396,6 @@ const SalaryCalculator = () => {
   // 在组件挂载时标记为浏览器环境
   useEffect(() => {
     setIsBrowser(true);
-    
-    // 在客户端环境中执行重定向
-    if (typeof window !== 'undefined') {
-      const hostname = window.location.hostname;
-      if (hostname !== 'worthjob.zippland.com' && hostname !== 'localhost' && !hostname.includes('127.0.0.1')) {
-        window.location.href = 'https://worthjob.zippland.com' + window.location.pathname;
-      }
-    }
   }, []);
   
   // 添加用于创建分享图片的引用
@@ -465,7 +457,6 @@ const SalaryCalculator = () => {
   const [showPPPList, setShowPPPList] = useState(false);
   const [assessment, setAssessment] = useState("");
   const [assessmentColor, setAssessmentColor] = useState("text-gray-500");
-  const [visitorVisible, setVisitorVisible] = useState(false);
 
   // 添加检查document对象存在的逻辑
   useEffect(() => {
@@ -523,52 +514,6 @@ const SalaryCalculator = () => {
       }
     }
   }, [formData]);
-
-  // 监听访客统计加载
-  useEffect(() => {
-    // 延迟检查busuanzi是否已加载
-    const timer = setTimeout(() => {
-      const pv = document.getElementById('busuanzi_value_site_pv');
-      const uv = document.getElementById('busuanzi_value_site_uv');
-      
-      if (pv && pv.innerText !== '') {
-        // 直接在现有数字上加上1700000（原seeyoufarm统计数据）
-        const currentCount = parseInt(pv.innerText, 10) || 0;
-        pv.innerText = (currentCount + 1700000).toString();
-        
-        // 同时增加访客数的历史数据
-        if (uv && uv.innerText !== '') {
-          const currentUV = parseInt(uv.innerText, 10) || 0;
-          uv.innerText = (currentUV + 250000).toString();
-        }
-        
-        setVisitorVisible(true);
-      } else {
-        // 如果未加载，再次尝试
-        const retryTimer = setTimeout(() => {
-          const pv = document.getElementById('busuanzi_value_site_pv');
-          const uv = document.getElementById('busuanzi_value_site_uv');
-          
-          if (pv && pv.innerText !== '') {
-            // 直接在现有数字上加上1700000（原seeyoufarm统计数据）
-            const currentCount = parseInt(pv.innerText, 10) || 0;
-            pv.innerText = (currentCount + 1700000).toString();
-            
-            // 同时增加访客数的历史数据
-            if (uv && uv.innerText !== '') {
-              const currentUV = parseInt(uv.innerText, 10) || 0;
-              uv.innerText = (currentUV + 1300000).toString();
-            }
-            
-            setVisitorVisible(true);
-          }
-        }, 2000);
-        return () => clearTimeout(retryTimer);
-      }
-    }, 1000);
-    
-    return () => clearTimeout(timer);
-  }, []);
 
   // 添加滚动位置保存和恢复逻辑
   useEffect(() => {
@@ -927,7 +872,7 @@ const SalaryCalculator = () => {
     }
     
     return newHistoryItem;
-  }, [formData, value, getValueAssessmentKey, getValueAssessment, selectedCountry, history, getCountryName, calculateWorkingDays, getDisplaySalary, formData.hasShuttle, formData.hasCanteen]);
+  }, [formData, value, getValueAssessmentKey, getValueAssessment, selectedCountry, history, getCountryName, calculateWorkingDays, getDisplaySalary]);
   
   // 删除单条历史记录
   const deleteHistoryItem = useCallback((id: string, e: React.MouseEvent) => {
@@ -973,39 +918,8 @@ const SalaryCalculator = () => {
     <div className="max-w-2xl mx-auto p-4 sm:p-6">
       <div className="mb-4 text-center">
         <h1 className="text-3xl md:text-4xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 py-2">{t('title')}</h1>
-        
-        <div className="mb-3">
-          <a
-            href="https://github.com/zippland/worth-calculator"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors inline-flex items-center gap-1.5"
-          >
-            <Star className="h-3.5 w-3.5" />
-            {t('star_request')}
-          </a>
-        </div>
-        
-        <div className="flex items-center justify-center gap-3 mb-2">
-          <p className="text-sm text-gray-500 dark:text-gray-400">v6.2.1</p>
-          <a
-            href="https://github.com/zippland/worth-calculator"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm text-gray-500 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-400 transition-colors flex items-center gap-1"
-          >
-            <Github className="h-3.5 w-3.5" />
-            {t('github')}
-          </a>
-          <a
-            href="https://www.xiaohongshu.com/user/profile/623e8b080000000010007721?xsec_token=YBzoLUB4HsSITTBOgPAXY-0Gvqvn3HqHpcDeA3sHhDh-M%3D&xsec_source=app_share&xhsshare=CopyLink&appuid=5c5d5259000000001d00ef04&apptime=1743400694&share_id=b9bfcd5090f9473daf5c1d1dc3eb0921&share_channel=copy_link"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm text-gray-500 hover:text-pink-500 dark:text-gray-400 dark:hover:text-pink-400 transition-colors flex items-center gap-1"
-          >
-            <Book className="h-3.5 w-3.5" />
-            {t('xiaohongshu')}
-          </a>
+
+        <div className="flex items-center justify-center gap-3 mb-3">
           {/* 仅在客户端渲染历史记录按钮 */}
           {isBrowser && (
             <button
@@ -1186,22 +1100,10 @@ const SalaryCalculator = () => {
             </div>
           </div>
         )}
-        
+
         <div className="flex justify-center mb-2">
           <LanguageSwitcher />
         </div>
-        
-        {/* 访问统计 - 仅在客户端渲染 */}
-        {isBrowser && (
-          <div className="mt-1 text-xs text-gray-400 dark:text-gray-600 flex justify-center gap-4">
-            <span id="busuanzi_container_site_pv" className={`transition-opacity duration-300 ${visitorVisible ? 'opacity-100' : 'opacity-0'}`}>
-              {t('visits')}: <span id="busuanzi_value_site_pv"></span>
-            </span>
-            <span id="busuanzi_container_site_uv" className={`transition-opacity duration-300 ${visitorVisible ? 'opacity-100' : 'opacity-0'}`}>
-              {t('visitors')}: <span id="busuanzi_value_site_uv"></span>
-            </span>
-          </div>
-        )}
       </div>
 
       <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl shadow-gray-200/50 dark:shadow-black/30">
@@ -1304,7 +1206,15 @@ const SalaryCalculator = () => {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">{t('public_holidays')}</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  {t('public_holidays')}
+                  <span className="ml-1 inline-flex items-center rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-800 dark:bg-blue-900 dark:text-blue-300 cursor-pointer group relative">
+                    ?
+                    <span className="absolute z-10 invisible group-hover:visible bg-gray-900 text-white text-xs rounded py-1 px-2 bottom-full mb-1 left-1/2 transform -translate-x-1/2 w-48 sm:w-64">
+                      {t('public_holidays_hint')}
+                    </span>
+                  </span>
+                </label>
                 <input
                   type="number"
                   value={formData.publicHolidays}
@@ -1622,7 +1532,7 @@ const SalaryCalculator = () => {
         </div>
         
         {/* 修改分享按钮为链接到分享页面，并保存到历史 */}
-        <div className="mt-6 flex justify-end">
+        <div className="mt-8 flex justify-center">
           <Link
             href={{
               pathname: '/share',
@@ -1661,12 +1571,12 @@ const SalaryCalculator = () => {
                 hasCanteen: formData.hasCanteen,
               }
             }}
-            className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-colors
-              ${formData.salary ? 'bg-blue-100 text-blue-700 hover:bg-blue-200 dark:bg-blue-900 dark:text-blue-300 dark:hover:bg-blue-800' : 
+            className={`inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl text-base md:text-lg font-semibold shadow-lg transition-all duration-200
+              ${formData.salary ? 'bg-blue-600 text-white hover:bg-blue-700 hover:-translate-y-0.5 hover:shadow-xl dark:bg-blue-500 dark:hover:bg-blue-400' : 
               'bg-gray-100 text-gray-400 cursor-not-allowed dark:bg-gray-800 dark:text-gray-600'}`}
             onClick={() => formData.salary ? saveToHistory() : null}
           >
-            <FileText className="w-4 h-4" />
+            <FileText className="w-5 h-5" />
             {t('view_report')}
           </Link>
         </div>

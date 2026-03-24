@@ -1,9 +1,7 @@
 <div align="center">
 
-<img src="title.png" alt="Job Worth Calculator" width="500" />
+<img src="title.png" alt="工作价值计算器" width="500" />
 <br><br>
-
-<a href="https://trendshift.io/repositories/13145" target="_blank"><img src="https://trendshift.io/api/badge/repositories/13145" alt="Zippland%2Fworth-calculator | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
 
 <p>
    <img src="https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js" />
@@ -12,12 +10,6 @@
    <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
 </p>
 
-<div align="center">
-
-**[⚡ Try it now ⚡](https://worthjob.zippland.com)**
-
-</div>
-
 <p>
    <a href="#english"><img src="https://img.shields.io/badge/English-blue?style=for-the-badge" alt="English" /></a>
    &nbsp;&nbsp;
@@ -25,17 +17,13 @@
    &nbsp;&nbsp;
    <a href="#japanese"><img src="https://img.shields.io/badge/日本語-green?style=for-the-badge" alt="日本語" /></a>
 </p>
-
-<p>
-🔥(访问量激增，Vercel免费额度老是用完，广告位招租)🔥
-</p>
 </div>
 
 ---
 
 <div id="english">
 
-<h2 align="center">📊 Job Worth Calculator</h2>
+<h2 align="center">📊 工作价值计算器</h2>
 
 <p align="center"><i>Calculating the actual value of your job beyond just salary</i></p>
 
@@ -45,6 +33,7 @@
 - **🌏 PPP Conversion**: International salary comparison with Purchasing Power Parity conversion across 190+ countries
 - **👩‍🎓 Personal Factors**: Customize calculations with personal education level, work experience, and more
 - **📱 Detailed Report**: Generate a shareable, downloadable job analysis report
+- **🕘 Local History**: Recent reports can be saved, restored, and deleted in the browser
 - **🌐 Internationalization**: Available in English/Chinese/Japanese.
 - **📱 Mobile Friendly**: Responsive design works on all devices
 
@@ -56,7 +45,7 @@
 4. Specify environmental factors (city, work environment, team, etc.)
 5. Input your education and experience
 6. View your job worth score and detailed evaluation
-7. Generate a shareable report
+7. Generate a shareable report, with history saved locally in your browser
 
 ### 📊 The Calculation
 
@@ -71,11 +60,40 @@ The job worth score is calculated using a comprehensive formula that accounts fo
 
 Contributions are welcome! Here's how you can help:
 
-- [Open an issue](https://github.com/zippland/worth-calculator/issues/new) if you have suggestions or find a bug
+- Open an issue in your current repository if you have suggestions or find a bug
 - Fork the repository and submit a PR for new features or bug fixes
 - Improve documentation or translations
 
 Please make sure to test your changes before submitting a PR.
+
+### ▲ Deploy on Vercel
+
+1. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+2. Start local development:
+
+   ```bash
+   npm run dev
+   ```
+
+3. Verify the production build:
+
+   ```bash
+   npm run build
+   ```
+
+4. Import the repository into Vercel and keep these settings:
+
+   - Framework Preset: `Next.js`
+   - Install Command: `npm install`
+   - Build Command: `npm run build`
+   - Output Directory: leave empty
+
+5. Click `Deploy`.
 
 ### 📝 License
 
@@ -87,7 +105,7 @@ Please make sure to test your changes before submitting a PR.
 
 <div id="中文">
 
-<h2 align="center">📊 工作性价比计算器</h2>
+<h2 align="center">📊 工作价值计算器</h2>
 
 <p align="center"><i>全面考量，计算薪资之外的工作真实价值</i></p>
 
@@ -97,6 +115,7 @@ Please make sure to test your changes before submitting a PR.
 - **🌏 PPP转换**: 通过购买力平价(PPP)转换支持190多个国家的薪资比较
 - **👩‍🎓 个人因素**: 根据个人学历、工作经验等定制计算
 - **📱 详细报告**: 生成可分享、可下载的工作分析报告
+- **🕘 历史记录**: 最近报告会保存在浏览器本地，可恢复、查看和删除
 - **🌐 国际化**: 支持中文/英文/日文
 - **📱 移动友好**: 响应式设计，适用于所有设备
 
@@ -108,7 +127,7 @@ Please make sure to test your changes before submitting a PR.
 4. 指定环境因素（城市、工作环境、团队等）
 5. 输入学历和工作经验
 6. 查看工作性价比分数和详细评估
-7. 生成可分享的报告
+7. 生成可分享的报告，历史记录会自动保存在浏览器本地
 
 ### 📊 计算方法
 
@@ -123,11 +142,40 @@ Please make sure to test your changes before submitting a PR.
 
 欢迎参与贡献！以下是您可以提供帮助的方式：
 
-- 如有建议或发现错误，请[提交问题](https://github.com/zippland/worth-calculator/issues/new)
-- 分叉仓库并提交PR，增加新功能或修复bug
+- 如有建议或发现错误，请在当前仓库提交 Issue
+- 分叉仓库并提交 PR，增加新功能或修复 bug
 - 改进文档或翻译
 
 请确保在提交PR前测试您的更改。
+
+### ▲ Vercel 部署
+
+1. 安装依赖：
+
+   ```bash
+   npm install
+   ```
+
+2. 本地启动开发环境：
+
+   ```bash
+   npm run dev
+   ```
+
+3. 生产构建验证：
+
+   ```bash
+   npm run build
+   ```
+
+4. 在 Vercel 中导入仓库并保持以下配置：
+
+   - Framework Preset：`Next.js`
+   - Install Command：`npm install`
+   - Build Command：`npm run build`
+   - Output Directory：留空，使用默认值
+
+5. 点击 `Deploy` 即可完成发布。
 
 ### 📝 许可证
 
@@ -149,6 +197,7 @@ Please make sure to test your changes before submitting a PR.
 - **🌏 PPP変換**: 購買力平価(PPP)による190カ国以上の国際的な給与比較
 - **👩‍🎓 個人要素**: 学歴、職歴などに基づくカスタム計算
 - **📱 詳細レポート**: 共有可能でダウンロード可能な仕事分析レポートの生成
+- **🕘 履歴保存**: 最近のレポートはブラウザ内に保存され、復元・閲覧・削除できます
 - **🌐 多言語対応**: 英語、中国語、日本語で利用可能
 - **📱 モバイル対応**: すべてのデバイスで動作するレスポンシブデザイン
 
@@ -160,7 +209,7 @@ Please make sure to test your changes before submitting a PR.
 4. 環境要素（都市、職場環境、チームなど）を指定
 5. 学歴と経験を入力
 6. 仕事の価値スコアと詳細評価を確認
-7. ダウンロード・共有可能な
+7. ダウンロード・共有可能なレポートを生成し、履歴はブラウザ内に保存
 
 ### 📊 計算方法
 
@@ -175,11 +224,40 @@ Please make sure to test your changes before submitting a PR.
 
 貢献は大歓迎です！以下の方法でご協力いただけます：
 
-- 提案やバグを発見した場合は[問題を報告](https://github.com/zippland/worth-calculator/issues/new)してください
-- リポジトリをフォークし、新機能やバグ修正のためのPRを提出
+- 提案やバグを発見した場合は、現在のリポジトリで Issue を作成してください
+- リポジトリをフォークし、新機能やバグ修正のための PR を提出
 - ドキュメントや翻訳の改善
 
 PRを提出する前に変更をテストしてください。
+
+### ▲ Vercel へのデプロイ
+
+1. 依存関係をインストール：
+
+   ```bash
+   npm install
+   ```
+
+2. ローカル開発サーバーを起動：
+
+   ```bash
+   npm run dev
+   ```
+
+3. 本番ビルドを確認：
+
+   ```bash
+   npm run build
+   ```
+
+4. Vercel にリポジトリをインポートして、以下を設定：
+
+   - Framework Preset：`Next.js`
+   - Install Command：`npm install`
+   - Build Command：`npm run build`
+   - Output Directory：空欄のまま
+
+5. `Deploy` をクリックして公開します。
 
 ### 📝 ライセンス
 

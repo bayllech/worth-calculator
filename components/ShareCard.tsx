@@ -3,7 +3,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { ArrowLeft, Download } from 'lucide-react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { useLanguage } from './LanguageContext';
 import { countryNames } from './LanguageContext'; // 导入countryNames对象
 
@@ -687,7 +686,6 @@ const ShareCard: React.FC<ShareCardProps> = (props) => {
         {/* 底部信息 - 更小的文字 */}
         <div className="mt-6 md:mt-10 text-center text-gray-500 space-y-0.5 text-xs md:text-sm">
           <div>{t('share_custom_made')}</div>
-          <div>worthjob.zippland.com</div>
         </div>
       </div>
       
@@ -864,23 +862,9 @@ const ShareCard: React.FC<ShareCardProps> = (props) => {
               
               {/* 页脚 */}
               <div className="bg-gray-50 py-4 px-6 border-t border-gray-200">
-                <div className="flex justify-between items-center">
-                  <div className="flex items-center">
-                    <img 
-                      src="/title.png" 
-                      alt="Job Worth Calculator" 
-                      className="h-20 mr-3"
-                    />
-                    <div className="flex flex-col">
-                      <div className="text-sm font-medium text-gray-700">{t('share_custom_made')}</div>
-                      <div className="text-sm text-gray-500">worthjob.zippland.com</div>
-                    </div>
-                  </div>
-                  <img 
-                    src="/website.png" 
-                    alt=""
-                    className="h-16 w-16 opacity-85" 
-                  />
+                <div className="text-center">
+                  <div className="text-sm font-medium text-gray-700">{t('share_custom_made')}</div>
+                  <div className="text-xs text-gray-500 mt-1">{t('share_job_worth_report')}</div>
                 </div>
               </div>
             </div>
